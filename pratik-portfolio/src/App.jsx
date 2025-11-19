@@ -8,13 +8,14 @@ export default function PortfolioWebsite() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [selectedProject, setSelectedProject] = useState(null);
 
   // Image URLs - Replace these with your actual image URLs
   const profileImage = "src/assets/profile2.jpg";
   
   const projectImages = {
     first: "src/assets/first.JPG",
-    second: "src/assets/second.jpeg",
+    second: "src/assets/third.jpeg",
     third: "src/assets/third.jpeg",
     fourth: "src/assets/fourth.jpeg",
     fifth: "src/assets/fifth.jpeg",
@@ -97,12 +98,57 @@ export default function PortfolioWebsite() {
   ];
 
   const technicalSkills = [
-    { name: 'AutoCAD', level: 90, icon: Code },
-    { name: 'Revit', level: 85, icon: Code },
-    { name: 'Sketchup', level: 80, icon: Code },
-    { name: 'Design Review', level: 85, icon: Sparkles },
-    { name: 'Documentation', level: 88, icon: Sparkles },
-    { name: 'Schematic Design', level: 82, icon: Sparkles }
+    'AutoCAD',
+    'Revit', 
+    'Sketchup',
+    'Design Review',
+    'Documentation',
+    'Schematic Design'
+  ];
+
+  const projects = [
+    { 
+      title: 'Modern Bungalow', 
+      category: 'BIM & Design', 
+      gradient: 'from-blue-500 to-indigo-500', 
+      image: projectImages.first,
+      description: 'This building represents the Modern Architectural style, utilizing simple, clean linear geometry and a minimalistic approach.​The color scheme employs a neutral palette, featuring primarily white, dark grey, and medium grey on the façade.​The building structure features a modern blend of glass, steel, and concrete, notably incorporating a glass railing on the terrace and a small glass canopy on the top floor.Wooden-toned vertical panels are used on the façade, which adds warmth to the neutral colors and introduces textural variety to the design ​The overall design maintains an attractive balance between space and volume, which is further enhanced by the surrounding greenery and the effective rendering of natural light.'
+    },
+    { 
+      title: 'Luxurious Bedroom', 
+      category: 'Interior Design', 
+      gradient: 'from-indigo-500 to-purple-500', 
+      image: projectImages.second,
+      description: 'Elegant bedroom interior with premium finishes, custom lighting design, and sophisticated color palette creating a serene retreat space.'
+    },
+    { 
+      title: 'Modern Hall', 
+      category: 'Structural Design', 
+      gradient: 'from-purple-500 to-pink-500', 
+      image: projectImages.third,
+      description: 'Spacious hall design with modern aesthetic, featuring statement ceiling treatments, integrated lighting, and functional layout planning.'
+    },
+    { 
+      title: 'Hall with TV Unit', 
+      category: 'Space Planning', 
+      gradient: 'from-pink-500 to-red-500', 
+      image: projectImages.fourth,
+      description: 'Contemporary living space centered around custom-designed TV unit with smart storage solutions and ambient lighting integration.'
+    },
+    { 
+      title: 'Elegant Living Space', 
+      category: 'BIM Modeling', 
+      gradient: 'from-red-500 to-orange-500', 
+      image: projectImages.fifth,
+      description: 'Refined living area design with attention to spatial flow, material selection, and creating harmonious connection between different zones.'
+    },
+    { 
+      title: 'Renovation Project', 
+      category: 'Design & Execution', 
+      gradient: 'from-orange-500 to-yellow-500', 
+      image: projectImages.sixth,
+      description: 'Complete renovation transforming existing space with modern amenities, improved functionality, and updated aesthetic appeal.'
+    }
   ];
 
   return (
@@ -119,6 +165,33 @@ export default function PortfolioWebsite() {
           }}
         ></div>
       </div>
+
+      {/* Image Modal */}
+      {selectedProject && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 backdrop-blur-sm"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div className="relative max-w-6xl w-full">
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute -top-12 right-0 text-white hover:text-red-400 transition-colors"
+            >
+              <X size={32} />
+            </button>
+            <img 
+              src={selectedProject.image} 
+              alt={selectedProject.title}
+              className="w-full h-auto max-h-[85vh] object-contain rounded-2xl shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <div className="mt-4 text-center">
+              <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
+              <p className="text-gray-300">{selectedProject.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-slate-900/80 backdrop-blur-xl shadow-2xl border-b border-white/5' : 'bg-transparent'}`}>
@@ -237,23 +310,21 @@ export default function PortfolioWebsite() {
                 ))}
               </div>
             </div>
-            <div className="flex justify-center relative">
+            <div className="flex justify-center items-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                <div className="relative w-80 h-80 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/10 shadow-2xl overflow-hidden">
-                  <div className="absolute inset-4 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={profileImage} 
-                      alt="Pratik Gaikwad" 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className="hidden w-full h-full items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-500">
-                      <User size={120} className="text-white" />
-                    </div>
+                <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-2xl">
+                  <img 
+                    src={profileImage} 
+                    alt="Pratik Gaikwad" 
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="hidden w-full h-full items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-500">
+                    <User size={120} className="text-white" />
                   </div>
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl shadow-2xl border border-white/10 backdrop-blur-xl">
@@ -331,27 +402,13 @@ export default function PortfolioWebsite() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-3xl p-8 shadow-2xl border border-white/5 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-white mb-8">Technical Skills</h3>
-              <div className="space-y-6">
-                {technicalSkills.map((skill, idx) => {
-                  const Icon = skill.icon;
-                  return (
-                    <div key={idx} className="group">
-                      <div className="flex justify-between items-center mb-3">
-                        <div className="flex items-center gap-2">
-                          <Icon size={18} className="text-blue-400" />
-                          <span className="text-gray-200 font-medium">{skill.name}</span>
-                        </div>
-                        <span className="text-blue-400 font-bold text-lg">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-slate-700/50 rounded-full h-3 overflow-hidden">
-                        <div 
-                          className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full transition-all duration-1000 shadow-lg shadow-blue-500/50"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="grid grid-cols-2 gap-3">
+                {technicalSkills.map((skill, idx) => (
+                  <div key={idx} className="flex items-center gap-2 p-4 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-xl hover:from-blue-500/20 hover:to-indigo-500/20 transition-all border border-white/5 group cursor-pointer">
+                    <CheckCircle size={18} className="text-blue-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                    <span className="text-gray-200 font-medium text-sm">{skill}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -505,15 +562,12 @@ export default function PortfolioWebsite() {
           <p className="text-lg text-gray-300 mb-12">Showcasing innovative design solutions and engineering excellence</p>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              { title: 'Modern Bungalow', category: 'BIM & Design', gradient: 'from-blue-500 to-indigo-500', image: projectImages.first },
-              { title: 'Luxurious Bedroom', category: 'Interior Design', gradient: 'from-indigo-500 to-purple-500', image: projectImages.second },
-              { title: 'Modern hall', category: 'Structural Design', gradient: 'from-purple-500 to-pink-500', image: projectImages.third },
-              { title: 'hall with tv', category: 'Space Planning', gradient: 'from-pink-500 to-red-500', image: projectImages.fourth },
-              { title: '', category: 'BIM Modeling', gradient: 'from-red-500 to-orange-500', image: projectImages.fifth },
-              { title: 'Renovation Project', category: 'Design & Execution', gradient: 'from-orange-500 to-yellow-500', image: projectImages.sixth }
-            ].map((project, i) => (
-              <div key={i} className="group bg-slate-800/50 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all hover:scale-[1.05] border border-white/5 backdrop-blur-sm cursor-pointer">
+            {projects.map((project, i) => (
+              <div 
+                key={i} 
+                className="group bg-slate-800/50 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all hover:scale-[1.05] border border-white/5 backdrop-blur-sm cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
                 <div className={`h-56 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
                   <img 
                     src={project.image} 
@@ -534,7 +588,7 @@ export default function PortfolioWebsite() {
                     {project.category}
                   </span>
                   <h3 className="text-xl font-bold text-white mt-4 mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
-                  <p className="text-gray-400 text-sm">Innovative design solution combining functionality with aesthetics</p>
+                  <p className="text-gray-400 text-sm line-clamp-2">{project.description}</p>
                 </div>
               </div>
             ))}
@@ -714,12 +768,12 @@ export default function PortfolioWebsite() {
                 </div>
                 <div className="text-left flex-1">
                   <p className="text-sm text-gray-400 font-medium mb-3">Location</p>
-                  <p className="text-white font-semibold">Aundh, Pune</p>
-                  <p className="text-gray-400 text-sm mb-4">Maharashtra - 411007</p>
+                  <p className="text-white font-semibold">Niyoshi Park 2</p>
+                  <p className="text-gray-400 text-sm mb-4">151, Sanghvi Kesari Rd, Sanghvi Nagar, Ward No. 8, Aundh Gaon, Aundh, Pune, Maharashtra 411067</p>
                   
                   <div className="mt-4 rounded-xl overflow-hidden border border-white/10 shadow-lg">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121058.9618763853!2d73.73921984335936!3d18.563537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf5e1c5f2e0f%3A0x4e1b6f7e4c5f2e0f!2sAundh%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.290488236627!2d73.81269!3d18.560937999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf375a685077%3A0xa68b5fc50f9d5493!2sNiyoshi%20Park%202!5e0!3m2!1sen!2sin!4v1763570220197!5m2!1sen!2sin"
                       width="100%"
                       height="200"
                       style={{ border: 0 }}
