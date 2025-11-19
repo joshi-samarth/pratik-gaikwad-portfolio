@@ -10,7 +10,7 @@ export default function PortfolioWebsite() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // Image URLs - Replace these with your actual image URLs
-  const profileImage = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop";
+  const profileImage = "ass";
   
   const projectImages = {
     residential: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
