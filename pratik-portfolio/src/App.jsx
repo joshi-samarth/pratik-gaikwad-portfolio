@@ -10,15 +10,15 @@ export default function PortfolioWebsite() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // Image URLs - Replace these with your actual image URLs
-  const profileImage = "ass";
+  const profileImage = "src/assets/profile2.jpg";
   
   const projectImages = {
-    residential: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
-    commercial: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-    bridge: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=600&h=400&fit=crop",
-    office: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400&fit=crop",
-    educational: "https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop",
-    renovation: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&h=400&fit=crop"
+    first: "src/assets/first.JPG",
+    second: "src/assets/second.jpeg",
+    third: "src/assets/third.jpeg",
+    fourth: "src/assets/fourth.jpeg",
+    fifth: "src/assets/fifth.jpeg",
+    sixth: "src/assets/sixth.png"
   };
 
   useEffect(() => {
@@ -506,12 +506,12 @@ export default function PortfolioWebsite() {
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {[
-              { title: 'Residential Complex', category: 'BIM & Design', gradient: 'from-blue-500 to-indigo-500', image: projectImages.residential },
-              { title: 'Commercial Interior', category: 'Interior Design', gradient: 'from-indigo-500 to-purple-500', image: projectImages.commercial },
-              { title: 'Bridge Structure', category: 'Structural Design', gradient: 'from-purple-500 to-pink-500', image: projectImages.bridge },
-              { title: 'Office Space', category: 'Space Planning', gradient: 'from-pink-500 to-red-500', image: projectImages.office },
-              { title: 'Educational Institute', category: 'BIM Modeling', gradient: 'from-red-500 to-orange-500', image: projectImages.educational },
-              { title: 'Renovation Project', category: 'Design & Execution', gradient: 'from-orange-500 to-yellow-500', image: projectImages.renovation }
+              { title: 'Modern Bungalow', category: 'BIM & Design', gradient: 'from-blue-500 to-indigo-500', image: projectImages.first },
+              { title: 'Luxurious Bedroom', category: 'Interior Design', gradient: 'from-indigo-500 to-purple-500', image: projectImages.second },
+              { title: 'Modern hall', category: 'Structural Design', gradient: 'from-purple-500 to-pink-500', image: projectImages.third },
+              { title: 'hall with tv', category: 'Space Planning', gradient: 'from-pink-500 to-red-500', image: projectImages.fourth },
+              { title: '', category: 'BIM Modeling', gradient: 'from-red-500 to-orange-500', image: projectImages.fifth },
+              { title: 'Renovation Project', category: 'Design & Execution', gradient: 'from-orange-500 to-yellow-500', image: projectImages.sixth }
             ].map((project, i) => (
               <div key={i} className="group bg-slate-800/50 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all hover:scale-[1.05] border border-white/5 backdrop-blur-sm cursor-pointer">
                 <div className={`h-56 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
