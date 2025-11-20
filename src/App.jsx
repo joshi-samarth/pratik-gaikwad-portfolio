@@ -31,15 +31,15 @@ export default function PortfolioWebsite() {
   const [expandedProject, setExpandedProject] = useState(null);
 
   // Image URLs - Replace these with your actual image URLs if needed
-  const profileImage = "src/assets/profile2.jpg";
+  const profileImage = "assets/profile2.jpg";
 
   const projectImages = {
-    first: "src/assets/first.JPG",
-    second: "src/assets/second.jpeg",
-    third: "src/assets/third.jpeg",
-    fourth: "src/assets/fourth.jpeg",
-    fifth: "src/assets/fifth.jpeg",
-    sixth: "src/assets/sixth.png"
+    first: "assets/first.JPG",
+    second: "assets/second.jpeg",
+    third: "assets/third.jpeg",
+    fourth: "assets/fourth.jpeg",
+    fifth: "assets/fifth.jpeg",
+    sixth: "assets/sixth.PNG"
   };
 
   useEffect(() => {
