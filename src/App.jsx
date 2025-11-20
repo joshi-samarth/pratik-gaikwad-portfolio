@@ -1,5 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Mail, Phone, Instagram, Award, Briefcase, GraduationCap, Wrench, User, FolderOpen, Send, MapPin, CheckCircle, ArrowRight, Sparkles, Code, Zap } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Mail,
+  Phone,
+  Instagram,
+  Award,
+  Briefcase,
+  GraduationCap,
+  Wrench,
+  User,
+  FolderOpen,
+  Send,
+  MapPin,
+  CheckCircle,
+  ArrowRight,
+  Sparkles,
+  Code,
+  Zap
+} from 'lucide-react';
 
 export default function PortfolioWebsite() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,10 +28,11 @@ export default function PortfolioWebsite() {
   const [formStatus, setFormStatus] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState(null);
+  const [expandedProject, setExpandedProject] = useState(null);
 
-  // Image URLs - Replace these with your actual image URLs
+  // Image URLs - Replace these with your actual image URLs if needed
   const profileImage = "src/assets/profile2.jpg";
-  
+
   const projectImages = {
     first: "src/assets/first.JPG",
     second: "src/assets/third.jpeg",
@@ -25,7 +45,7 @@ export default function PortfolioWebsite() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       const sections = ['home', 'about', 'skills', 'education', 'experience', 'projects', 'achievements', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -68,15 +88,15 @@ export default function PortfolioWebsite() {
       setFormStatus('error');
       return;
     }
-    
+
     setFormStatus('sending');
-    
+
     const mailtoLink = `mailto:gaikwadpratik0002@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
-    
+
     window.location.href = mailtoLink;
-    
+
     setTimeout(() => {
       setFormStatus('success');
       setTimeout(() => {
@@ -99,7 +119,7 @@ export default function PortfolioWebsite() {
 
   const technicalSkills = [
     'AutoCAD',
-    'Revit', 
+    'Revit',
     'Sketchup',
     'Design Review',
     'Documentation',
@@ -107,49 +127,77 @@ export default function PortfolioWebsite() {
   ];
 
   const projects = [
-    { 
-      title: 'Modern Bungalow', 
-      category: 'BIM & Design', 
-      gradient: 'from-blue-500 to-indigo-500', 
+    {
+      title: 'Modern Bungalow',
+      category: 'BIM & Design',
+      gradient: 'from-blue-500 to-indigo-500',
       image: projectImages.first,
-      description: 'This building represents the Modern Architectural style, utilizing simple, clean linear geometry and a minimalistic approach.​The color scheme employs a neutral palette, featuring primarily white, dark grey, and medium grey on the façade.​The building structure features a modern blend of glass, steel, and concrete, notably incorporating a glass railing on the terrace and a small glass canopy on the top floor.Wooden-toned vertical panels are used on the façade, which adds warmth to the neutral colors and introduces textural variety to the design ​The overall design maintains an attractive balance between space and volume, which is further enhanced by the surrounding greenery and the effective rendering of natural light.'
+      description:
+        'This building represents the Modern Architectural style, utilizing simple, clean linear geometry and a minimalistic approach.​The color scheme employs a neutral palette, featuring primarily white, dark grey, and medium grey on the façade.​The building structure features a modern blend of glass, steel, and concrete, notably incorporating a glass railing on the terrace and a small glass canopy on the top floor.Wooden-toned vertical panels are used on the façade, which adds warmth to the neutral colors and introduces textural variety to the design ​The overall design maintains an attractive balance between space and volume, which is further enhanced by the surrounding greenery and the effective rendering of natural light.'
     },
-    { 
-      title: 'Luxurious Bedroom', 
-      category: 'Interior Design', 
-      gradient: 'from-indigo-500 to-purple-500', 
+    {
+      title: 'Luxurious Bedroom',
+      category: 'Interior Design',
+      gradient: 'from-indigo-500 to-purple-500',
       image: projectImages.second,
-      description: 'Elegant bedroom interior with premium finishes, custom lighting design, and sophisticated color palette creating a serene retreat space.'
+      description:
+        'Elegant bedroom interior with premium finishes, custom lighting design, and sophisticated color palette creating a serene retreat space.'
     },
-    { 
-      title: 'Modern Hall', 
-      category: 'Structural Design', 
-      gradient: 'from-purple-500 to-pink-500', 
+    {
+      title: 'Modern Hall',
+      category: 'Structural Design',
+      gradient: 'from-purple-500 to-pink-500',
       image: projectImages.third,
-      description: 'Spacious hall design with modern aesthetic, featuring statement ceiling treatments, integrated lighting, and functional layout planning.'
+      description:
+        'Spacious hall design with modern aesthetic, featuring statement ceiling treatments, integrated lighting, and functional layout planning.'
     },
-    { 
-      title: 'Hall with TV Unit', 
-      category: 'Space Planning', 
-      gradient: 'from-pink-500 to-red-500', 
+    {
+      title: 'Hall with TV Unit',
+      category: 'Space Planning',
+      gradient: 'from-pink-500 to-red-500',
       image: projectImages.fourth,
-      description: 'Contemporary living space centered around custom-designed TV unit with smart storage solutions and ambient lighting integration.'
+      description:
+        'Contemporary living space centered around custom-designed TV unit with smart storage solutions and ambient lighting integration.'
     },
-    { 
-      title: 'Elegant Living Space', 
-      category: 'BIM Modeling', 
-      gradient: 'from-red-500 to-orange-500', 
+    {
+      title: 'Elegant Living Space',
+      category: 'BIM Modeling',
+      gradient: 'from-red-500 to-orange-500',
       image: projectImages.fifth,
-      description: 'Refined living area design with attention to spatial flow, material selection, and creating harmonious connection between different zones.'
+      description:
+        'Refined living area design with attention to spatial flow, material selection, and creating harmonious connection between different zones.'
     },
-    { 
-      title: 'Renovation Project', 
-      category: 'Design & Execution', 
-      gradient: 'from-orange-500 to-yellow-500', 
+    {
+      title: 'Renovation Project',
+      category: 'Design & Execution',
+      gradient: 'from-orange-500 to-yellow-500',
       image: projectImages.sixth,
-      description: 'Complete renovation transforming existing space with modern amenities, improved functionality, and updated aesthetic appeal.'
+      description:
+        'Complete renovation transforming existing space with modern amenities, improved functionality, and updated aesthetic appeal.'
+    },
+    {
+      title: 'Renovation Project',
+      category: 'Design & Execution',
+      gradient: 'from-orange-500 to-yellow-500',
+      image: projectImages.sixth,
+      description:
+        'Complete renovation transforming existing space with modern amenities, improved functionality, and updated aesthetic appeal.'
     }
   ];
+
+  // Helper: show image fallback (for profile and project cards)
+  const showFallback = (imgEl, fallbackSelector) => {
+    try {
+      imgEl.style.display = 'none';
+      const parent = imgEl.parentNode;
+      if (parent) {
+        const fallback = parent.querySelector(fallbackSelector);
+        if (fallback) fallback.style.display = 'flex';
+      }
+    } catch (err) {
+      // ignore
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white overflow-hidden">
@@ -157,39 +205,40 @@ export default function PortfolioWebsite() {
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div 
+        <div
           className="absolute w-64 h-64 bg-purple-500/5 rounded-full blur-2xl transition-all duration-300 ease-out"
-          style={{ 
-            left: `${mousePosition.x - 128}px`, 
+          style={{
+            left: `${mousePosition.x - 128}px`,
             top: `${mousePosition.y - 128}px`,
           }}
         ></div>
       </div>
 
-      {/* Image Modal */}
+      {/* Image Modal (fixed: only image shown, centered, no description) */}
       {selectedProject && (
-        <div 
-          className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 backdrop-blur-sm"
+        <div
+          className="fixed inset-0 bg-black/95 z-[200] flex items-center justify-center p-4"
           onClick={() => setSelectedProject(null)}
         >
-          <div className="relative max-w-6xl w-full">
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute -top-12 right-0 text-white hover:text-red-400 transition-colors"
-            >
-              <X size={32} />
-            </button>
-            <img 
-              src={selectedProject.image} 
-              alt={selectedProject.title}
-              className="w-full h-auto max-h-[85vh] object-contain rounded-2xl shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <div className="mt-4 text-center">
-              <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
-              <p className="text-gray-300">{selectedProject.description}</p>
-            </div>
+          <img
+            src={selectedProject.image}
+            alt={selectedProject.title}
+            className="max-w-full max-h-full object-contain rounded-xl"
+            onClick={(e) => e.stopPropagation()}
+            onError={(e) => showFallback(e.currentTarget, '.modal-img-fallback')}
+          />
+
+          <div className="modal-img-fallback hidden items-center justify-center w-96 h-56 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl">
+            <FolderOpen size={48} />
           </div>
+
+          <button
+            className="absolute top-6 right-6 text-white hover:text-red-400 transition"
+            onClick={() => setSelectedProject(null)}
+            aria-label="Close image"
+          >
+            <X size={38} />
+          </button>
         </div>
       )}
 
@@ -203,18 +252,15 @@ export default function PortfolioWebsite() {
               </h1>
               <p className="text-xs text-blue-300/60 font-light">Civil Engineer & BIM Specialist</p>
             </div>
-            
+
             <div className="hidden md:block">
               <div className="ml-10 flex items-center space-x-1">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative ${
-                      activeSection === item.id
-                        ? 'text-white'
-                        : 'text-gray-300 hover:text-white'
-                    }`}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative ${activeSection === item.id ? 'text-white' : 'text-gray-300 hover:text-white'
+                      }`}
                   >
                     {activeSection === item.id && (
                       <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl"></span>
@@ -243,11 +289,8 @@ export default function PortfolioWebsite() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all ${
-                    activeSection === item.id
-                      ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'
-                      : 'text-gray-300 hover:bg-white/5'
-                  }`}
+                  className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all ${activeSection === item.id ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white' : 'text-gray-300 hover:bg-white/5'
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -298,9 +341,9 @@ export default function PortfolioWebsite() {
                   { icon: Mail, href: 'mailto:gaikwadpratik0002@gmail.com', color: 'hover:text-blue-400' },
                   { icon: Instagram, href: 'https://instagram.com/pratikgaikwads', color: 'hover:text-pink-400' }
                 ].map(({ icon: Icon, href, color }, i) => (
-                  <a 
+                  <a
                     key={i}
-                    href={href} 
+                    href={href}
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className={`p-3 bg-white/5 border border-white/10 rounded-xl ${color} transition-all hover:scale-110 hover:bg-white/10 backdrop-blur-sm`}
@@ -314,16 +357,15 @@ export default function PortfolioWebsite() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
                 <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-2xl">
-                  <img 
-                    src={profileImage} 
-                    alt="Pratik Gaikwad" 
+                  <img
+                    src={profileImage}
+                    alt="Pratik Gaikwad"
                     className="w-full h-full object-cover object-center"
                     onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
+                      showFallback(e.currentTarget, '.profile-fallback');
                     }}
                   />
-                  <div className="hidden w-full h-full items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-500">
+                  <div className="profile-fallback hidden w-full h-full items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-500">
                     <User size={120} className="text-white" />
                   </div>
                 </div>
@@ -398,7 +440,7 @@ export default function PortfolioWebsite() {
             </div>
             <h2 className="text-5xl font-bold text-white">Skills & Expertise</h2>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-3xl p-8 shadow-2xl border border-white/5 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-white mb-8">Technical Skills</h3>
@@ -436,10 +478,10 @@ export default function PortfolioWebsite() {
             </div>
             <h2 className="text-5xl font-bold text-white">Education & Certifications</h2>
           </div>
-          
+
           <div className="space-y-6">
             {[
-              { 
+              {
                 title: 'Diploma in Civil Engineering',
                 institution: 'Government Polytechnic Dharashiv',
                 period: '2021 - 2024',
@@ -447,7 +489,7 @@ export default function PortfolioWebsite() {
                 color: 'from-blue-500 to-indigo-500',
                 icon: GraduationCap
               },
-              { 
+              {
                 title: 'Building Information Modeling (BIM)',
                 institution: 'CadDesk Pune - Professional Certification',
                 period: '2024 - 2025',
@@ -455,7 +497,7 @@ export default function PortfolioWebsite() {
                 color: 'from-indigo-500 to-purple-500',
                 icon: Award
               },
-              { 
+              {
                 title: 'B.Tech in Civil Engineering',
                 institution: 'Currently Pursuing',
                 period: 'In Progress',
@@ -498,7 +540,7 @@ export default function PortfolioWebsite() {
             </div>
             <h2 className="text-5xl font-bold text-white">Professional Experience</h2>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
@@ -558,26 +600,26 @@ export default function PortfolioWebsite() {
             </div>
             <h2 className="text-5xl font-bold text-white">Featured Projects</h2>
           </div>
-          
+
           <p className="text-lg text-gray-300 mb-12">Showcasing innovative design solutions and engineering excellence</p>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {projects.map((project, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="group bg-slate-800/50 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all hover:scale-[1.05] border border-white/5 backdrop-blur-sm cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 <div className={`h-56 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
-                  <img 
-                    src={project.image} 
+                  <img
+                    src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                    onError={(e) => showFallback(e.currentTarget, '.img-fallback')}
                   />
+                  <div className="img-fallback hidden absolute inset-0 bg-gradient-to-br from-black/60 to-black/30 items-center justify-center">
+                    <FolderOpen size={72} className="text-white/80" />
+                  </div>
                   <div className="hidden absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors items-center justify-center">
                     <FolderOpen size={72} className="text-white/80 group-hover:scale-125 transition-transform" />
                   </div>
@@ -588,7 +630,25 @@ export default function PortfolioWebsite() {
                     {project.category}
                   </span>
                   <h3 className="text-xl font-bold text-white mt-4 mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
-                  <p className="text-gray-400 text-sm line-clamp-2">{project.description}</p>
+
+                  <div className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-sm">
+                      {expandedProject === i
+                        ? project.description
+                        : (project.description.length > 80 ? project.description.substring(0, 80) + "..." : project.description)}
+                    </p>
+
+                    <button
+                      className="text-blue-500 font-semibold text-sm bg-blue-100 px-3 py-1 rounded-full mt-2 inline-block hover:bg-blue-200 transition"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedProject(expandedProject === i ? null : i);
+                      }}
+                    >
+                      {expandedProject === i ? "Read Less" : "Read More"}
+                    </button>
+
+                  </div>
                 </div>
               </div>
             ))}
@@ -627,7 +687,7 @@ export default function PortfolioWebsite() {
             </div>
             <h2 className="text-5xl font-bold text-white">Awards & Recognition</h2>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
@@ -671,7 +731,7 @@ export default function PortfolioWebsite() {
             <h2 className="text-5xl font-bold text-white mb-4">Let's Work Together</h2>
             <p className="text-gray-300 text-lg">Have a project in mind? I'd love to hear about it!</p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="bg-slate-800/50 rounded-3xl p-8 shadow-2xl border border-white/5 backdrop-blur-xl">
               <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
@@ -712,27 +772,27 @@ export default function PortfolioWebsite() {
                     placeholder="Tell me about your project..."
                   ></textarea>
                 </div>
-                
+
                 {formStatus === 'sending' && (
                   <div className="bg-blue-500/10 border border-blue-400/20 text-blue-300 px-4 py-3 rounded-xl flex items-center gap-2">
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-400"></div>
                     <span>Opening your email client...</span>
                   </div>
                 )}
-                
+
                 {formStatus === 'success' && (
                   <div className="bg-green-500/10 border border-green-400/20 text-green-300 px-4 py-3 rounded-xl flex items-center gap-2">
                     <CheckCircle size={20} />
                     <span>Message sent successfully! I'll get back to you soon.</span>
                   </div>
                 )}
-                
+
                 {formStatus === 'error' && (
                   <div className="bg-red-500/10 border border-red-400/20 text-red-300 px-4 py-3 rounded-xl">
                     Please fill in all fields before submitting.
                   </div>
                 )}
-                
+
                 <button
                   type="submit"
                   className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-4 rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all flex items-center justify-center gap-2 font-semibold transform hover:scale-[1.02]"
@@ -745,7 +805,7 @@ export default function PortfolioWebsite() {
 
             <div className="space-y-5">
               <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              
+
               {[
                 { icon: Mail, title: 'Email Address', content: 'gaikwadpratik0002@gmail.com', href: 'mailto:gaikwadpratik0002@gmail.com', color: 'blue' },
                 { icon: Phone, title: 'Phone Number', content: '+91 8275260002', href: 'tel:+918275260002', color: 'green' },
@@ -770,8 +830,15 @@ export default function PortfolioWebsite() {
                   <p className="text-sm text-gray-400 font-medium mb-3">Location</p>
                   <p className="text-white font-semibold">Niyoshi Park 2</p>
                   <p className="text-gray-400 text-sm mb-4">151, Sanghvi Kesari Rd, Sanghvi Nagar, Ward No. 8, Aundh Gaon, Aundh, Pune, Maharashtra 411067</p>
-                  
-                  <div className="mt-4 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+
+                  {/* Clickable map wrapper: clicking opens Google Maps */}
+                  <div
+                    onClick={() => window.open("https://maps.google.com/?q=Niyoshi+Park+2+Aundh+Pune", "_blank")}
+                    className="mt-4 rounded-xl overflow-hidden border border-white/10 shadow-lg cursor-pointer"
+                    role="link"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter') window.open("https://maps.google.com/?q=Niyoshi+Park+2+Aundh+Pune", "_blank"); }}
+                  >
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.290488236627!2d73.81269!3d18.560937999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf375a685077%3A0xa68b5fc50f9d5493!2sNiyoshi%20Park%202!5e0!3m2!1sen!2sin!4v1763570220197!5m2!1sen!2sin"
                       width="100%"
@@ -780,7 +847,7 @@ export default function PortfolioWebsite() {
                       allowFullScreen=""
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      className="grayscale hover:grayscale-0 transition-all duration-300"
+                      className="grayscale hover:grayscale-0 transition-all duration-300 pointer-events-none"
                     ></iframe>
                   </div>
                 </div>
@@ -806,7 +873,7 @@ export default function PortfolioWebsite() {
               <p className="text-gray-400 font-medium">Civil Engineer & BIM Specialist</p>
               <p className="text-gray-500 text-sm mt-3 leading-relaxed">Transforming visions into reality through innovative design and engineering excellence.</p>
             </div>
-            
+
             <div>
               <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
               <div className="space-y-3">
@@ -821,7 +888,7 @@ export default function PortfolioWebsite() {
                 ))}
               </div>
             </div>
-            
+
             <div>
               <h4 className="text-lg font-semibold text-white mb-6">Connect</h4>
               <div className="flex gap-3">
@@ -830,9 +897,9 @@ export default function PortfolioWebsite() {
                   { icon: Mail, href: 'mailto:gaikwadpratik0002@gmail.com', color: 'hover:bg-blue-500' },
                   { icon: Phone, href: 'tel:+918275260002', color: 'hover:bg-green-500' }
                 ].map(({ icon: Icon, href, color }, i) => (
-                  <a 
+                  <a
                     key={i}
-                    href={href} 
+                    href={href}
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className={`bg-white/5 p-4 rounded-xl ${color} transition-all transform hover:scale-110 border border-white/10`}
@@ -843,7 +910,7 @@ export default function PortfolioWebsite() {
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-white/5 pt-8 text-center">
             <p className="text-gray-400">© 2025 Pratik Gaikwad. All rights reserved.</p>
             <p className="text-gray-600 text-sm mt-2">Designed and Developed with passion</p>
