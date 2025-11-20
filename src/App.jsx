@@ -35,7 +35,7 @@ export default function PortfolioWebsite() {
 
   const projectImages = {
     first: "src/assets/first.JPG",
-    second: "src/assets/third.jpeg",
+    second: "src/assets/second.jpeg",
     third: "src/assets/third.jpeg",
     fourth: "src/assets/fourth.jpeg",
     fifth: "src/assets/fifth.jpeg",
@@ -847,8 +847,9 @@ export default function PortfolioWebsite() {
                       allowFullScreen=""
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      className="grayscale hover:grayscale-0 transition-all duration-300 pointer-events-none"
-                    ></iframe>
+                      className="w-full h-[250px] rounded-xl pointer-events-none"
+                    />
+
                   </div>
                 </div>
               </div>
