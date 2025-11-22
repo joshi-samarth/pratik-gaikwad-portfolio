@@ -134,64 +134,106 @@ export default function PortfolioWebsite() {
       category: 'BIM & Exterior Design',
       gradient: 'from-blue-500 to-indigo-500',
       image: projectImages.first,
-      description:
-        'This building represents the Modern Architectural style, utilizing simple, clean linear geometry and a minimalistic approach.​The color scheme employs a neutral palette, featuring primarily white, dark grey, and medium grey on the façade.​The building structure features a modern blend of glass, steel, and concrete, notably incorporating a glass railing on the terrace and a small glass canopy on the top floor.Wooden-toned vertical panels are used on the façade, which adds warmth to the neutral colors and introduces textural variety to the design ​The overall design maintains an attractive balance between space and volume, which is further enhanced by the surrounding greenery and the effective rendering of natural light.'
+      description: [
+        'Modern Architectural style utilizing simple, clean linear geometry',
+        'Neutral color palette featuring white, dark grey, and medium grey',
+        'Modern blend of glass, steel, and concrete construction',
+        'Glass railing on terrace and small glass canopy on top floor',
+        'Wooden-toned vertical panels adding warmth and texture',
+        'Attractive balance between space and volume with surrounding greenery'
+      ]
     },
     {
       title: 'Luxurious Bedroom',
       category: 'Interior Design',
       gradient: 'from-indigo-500 to-purple-500',
       image: projectImages.second,
-      description:
-        'Elegant bedroom interior with premium finishes, custom lighting design, and sophisticated color palette creating a serene retreat space.'
+      description: [
+        'Elegant bedroom interior with premium finishes',
+        'Custom lighting design throughout',
+        'Sophisticated color palette',
+        'Creating a serene retreat space'
+      ]
     },
     {
       title: 'Modern Living',
       category: 'Structural Design',
       gradient: 'from-purple-500 to-pink-500',
       image: projectImages.third,
-      description:
-        'Spacious hall design with modern aesthetic, featuring statement ceiling treatments, integrated lighting, and functional layout planning.'
+      description: [
+        'Spacious hall design with modern aesthetic',
+        'Statement ceiling treatments',
+        'Integrated lighting solutions',
+        'Functional layout planning'
+      ]
     },
     {
       title: 'Hall with TV Unit',
       category: 'Space Planning',
       gradient: 'from-pink-500 to-red-500',
       image: projectImages.fourth,
-      description:
-        'Contemporary living space centered around custom-designed TV unit with smart storage solutions and ambient lighting integration.'
+      description: [
+        'Contemporary living space design',
+        'Custom-designed TV unit',
+        'Smart storage solutions',
+        'Ambient lighting integration'
+      ]
     },
     {
-      title: 'Elegant Entrance ',
+      title: 'Elegant Entrance',
       category: 'BIM Modeling',
       gradient: 'from-red-500 to-orange-500',
       image: projectImages.fifth,
-      description:
-        'This entrance space is designed with a focus on minimal elegance and welcoming ambience. The use of soft neutral tones, indirect lighting, and clean lines creates a sophisticated and calm first impression. Design Features:•	Neutral colour palette with warm lighting for a soothing atmosphere•	Curved ceiling detail with concealed LED strip lighting•	Modern door design with sleek black hardware•	Built-in niche display with glass, wood, and soft accents•	Fluted panel textures adding depth and verticality to the design•	Minimal décor elements that enhance visual balance without cluttering the space.'
+      description: [
+        'Minimal elegance with welcoming ambience',
+        'Neutral colour palette with warm lighting',
+        'Curved ceiling detail with concealed LED strip lighting',
+        'Modern door design with sleek black hardware',
+        'Built-in niche display with glass, wood, and soft accents',
+        'Fluted panel textures adding depth and verticality'
+      ]
     },
     {
       title: 'Renovation Project',
       category: 'Design & Execution',
       gradient: 'from-orange-500 to-yellow-500',
       image: projectImages.sixth,
-      description:
-        'Complete renovation transforming existing space with modern amenities, improved functionality, and updated aesthetic appeal.'
+      description: [
+        'Complete space transformation',
+        'Modern amenities integration',
+        'Improved functionality',
+        'Updated aesthetic appeal'
+      ]
     },
     {
-      title: 'Dinning Space',
+      title: 'Dining Space',
       category: 'Design & Execution',
       gradient: 'from-orange-500 to-yellow-500',
       image: projectImages.seven,
-      description:
-        'This interior design showcases a modern-contemporary living and dining area with an open layout that enhances functionality and visual flow. The space is designed to feel bright, spacious, and welcoming, using a neutral palette blended with accent colors.Design Highlights:•	Open-concept layout connecting living & dining spaces•	Soft beige tones with blue and grey accents for modern contrast•	Large windows with sheer curtains allowing natural light to fill the space•	Unique, sculptural furniture with rounded edges for a contemporary look•	Wooden elements and decor adding warmth and natural texture•	Designer ceiling lights with elegant hanging fixtures•	Minimal yet functional storage and display unit near the dining area'
+      description: [
+        'Modern-contemporary living and dining area',
+        'Open-concept layout connecting spaces',
+        'Soft beige tones with blue and grey accents',
+        'Large windows with sheer curtains for natural light',
+        'Sculptural furniture with rounded edges',
+        'Designer ceiling lights with elegant fixtures',
+        'Minimal yet functional storage and display units'
+      ]
     },
     {
       title: 'Minimal Modern TV Unit',
       category: 'Design & Execution',
       gradient: 'from-orange-500 to-yellow-500',
       image: projectImages.eight,
-      description:
-        'This design features a sleek and elegant TV unit with a strong focus on minimalism and clean aesthetics. The combination of soft neutral tones, hidden lighting, and subtle textures creates a calm and sophisticated atmosphere.Design Features:•	Neutral beige color palette for a soothing look•	Soft LED backlighting highlighting the TV panel•	Curved edge detailing for a modern and seamless appearance•	Vertical fluted panel texture adding depth and visual interest•	Built-in shelving for décor and books – both functional and aesthetic•	Low-height console unit with wooden grooves for a stylish finish'
+      description: [
+        'Sleek and elegant TV unit design',
+        'Neutral beige color palette',
+        'Soft LED backlighting highlighting TV panel',
+        'Curved edge detailing for seamless appearance',
+        'Vertical fluted panel texture adding depth',
+        'Built-in shelving for décor and books',
+        'Low-height console with wooden grooves'
+      ]
     }
   ];
 
@@ -617,10 +659,12 @@ export default function PortfolioWebsite() {
             {projects.map((project, i) => (
               <div
                 key={i}
-                className="group bg-slate-800/50 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all hover:scale-[1.05] border border-white/5 backdrop-blur-sm cursor-pointer"
-                onClick={() => setSelectedProject(project)}
+                className="group bg-slate-800/50 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all hover:scale-[1.05] border border-white/5 backdrop-blur-sm"
               >
-                <div className={`h-56 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                <div 
+                  className={`h-56 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden cursor-pointer`}
+                  onClick={() => setSelectedProject(project)}
+                >
                   <img
                     src={project.image}
                     alt={project.title}
@@ -630,7 +674,7 @@ export default function PortfolioWebsite() {
                   <div className="img-fallback hidden absolute inset-0 bg-gradient-to-br from-black/60 to-black/30 items-center justify-center">
                     <FolderOpen size={72} className="text-white/80" />
                   </div>
-                  <div className="hidden absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors items-center justify-center">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <FolderOpen size={72} className="text-white/80 group-hover:scale-125 transition-transform" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -639,25 +683,41 @@ export default function PortfolioWebsite() {
                   <span className={`text-xs font-semibold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent px-3 py-1 rounded-full border border-white/10 inline-block`}>
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-bold text-white mt-4 mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                  <h3 className="text-xl font-bold text-white mt-4 mb-3">{project.title}</h3>
 
-                  <div className="text-gray-400 text-sm">
-                    <p className="text-gray-400 text-sm">
-                      {expandedProject === i
-                        ? project.description
-                        : (project.description.length > 80 ? project.description.substring(0, 80) + "..." : project.description)}
-                    </p>
+                  <div className="text-sm">
+                    {expandedProject === i ? (
+                      <ul className="space-y-2.5 mb-4">
+                        {project.description.map((point, idx) => (
+                          <li key={idx} className="flex gap-2.5 items-start">
+                            <span className="text-blue-400 mt-0.5 flex-shrink-0">•</span>
+                            <span className="text-gray-300 leading-relaxed">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <ul className="space-y-2.5 mb-4">
+                        {project.description.slice(0, 2).map((point, idx) => (
+                          <li key={idx} className="flex gap-2.5 items-start">
+                            <span className="text-blue-400 mt-0.5 flex-shrink-0">•</span>
+                            <span className="text-gray-300 leading-relaxed">{point}</span>
+                          </li>
+                        ))}
+                        {project.description.length > 2 && (
+                          <li className="text-gray-500 italic text-xs ml-5">+ {project.description.length - 2} more features...</li>
+                        )}
+                      </ul>
+                    )}
 
                     <button
-                      className="text-blue-500 font-semibold text-sm bg-blue-100 px-3 py-1 rounded-full mt-2 inline-block hover:bg-blue-200 transition"
+                      className="text-blue-400 font-semibold text-sm bg-blue-500/10 px-3 py-1.5 rounded-full inline-block hover:bg-blue-500/20 transition border border-blue-400/20"
                       onClick={(e) => {
                         e.stopPropagation();
                         setExpandedProject(expandedProject === i ? null : i);
                       }}
                     >
-                      {expandedProject === i ? "Read Less" : "Read More"}
+                      {expandedProject === i ? "Show Less" : "Show More"}
                     </button>
-
                   </div>
                 </div>
               </div>
@@ -841,7 +901,6 @@ export default function PortfolioWebsite() {
                   <p className="text-white font-semibold">Niyoshi Park 2</p>
                   <p className="text-gray-400 text-sm mb-4">151, Sanghvi Kesari Rd, Sanghvi Nagar, Ward No. 8, Aundh Gaon, Aundh, Pune, Maharashtra 411067</p>
 
-                  {/* Clickable map wrapper: clicking opens Google Maps */}
                   <div
                     onClick={() => window.open("https://maps.google.com/?q=Niyoshi+Park+2+Aundh+Pune", "_blank")}
                     className="mt-4 rounded-xl overflow-hidden border border-white/10 shadow-lg cursor-pointer"
@@ -859,7 +918,6 @@ export default function PortfolioWebsite() {
                       referrerPolicy="no-referrer-when-downgrade"
                       className="w-full h-[250px] rounded-xl pointer-events-none"
                     />
-
                   </div>
                 </div>
               </div>
