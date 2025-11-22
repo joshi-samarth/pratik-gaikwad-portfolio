@@ -39,7 +39,9 @@ export default function PortfolioWebsite() {
     third: "assets/third.jpeg",
     fourth: "assets/fourth.jpeg",
     fifth: "assets/fifth.jpeg",
-    sixth: "assets/sixth.PNG"
+    sixth: "assets/sixth.PNG",
+    seven: "assets/seven.PNG",
+    eight: "assets/eight.jpeg"
   };
 
   useEffect(() => {
@@ -128,8 +130,8 @@ export default function PortfolioWebsite() {
 
   const projects = [
     {
-      title: 'Modern Bungalow',
-      category: 'BIM & Design',
+      title: 'Modern Elevation',
+      category: 'BIM & Exterior Design',
       gradient: 'from-blue-500 to-indigo-500',
       image: projectImages.first,
       description:
@@ -144,7 +146,7 @@ export default function PortfolioWebsite() {
         'Elegant bedroom interior with premium finishes, custom lighting design, and sophisticated color palette creating a serene retreat space.'
     },
     {
-      title: 'Modern Hall',
+      title: 'Modern Living',
       category: 'Structural Design',
       gradient: 'from-purple-500 to-pink-500',
       image: projectImages.third,
@@ -160,12 +162,12 @@ export default function PortfolioWebsite() {
         'Contemporary living space centered around custom-designed TV unit with smart storage solutions and ambient lighting integration.'
     },
     {
-      title: 'Elegant Living Space',
+      title: 'Elegant Entrance ',
       category: 'BIM Modeling',
       gradient: 'from-red-500 to-orange-500',
       image: projectImages.fifth,
       description:
-        'Refined living area design with attention to spatial flow, material selection, and creating harmonious connection between different zones.'
+        'This entrance space is designed with a focus on minimal elegance and welcoming ambience. The use of soft neutral tones, indirect lighting, and clean lines creates a sophisticated and calm first impression. Design Features:•	Neutral colour palette with warm lighting for a soothing atmosphere•	Curved ceiling detail with concealed LED strip lighting•	Modern door design with sleek black hardware•	Built-in niche display with glass, wood, and soft accents•	Fluted panel textures adding depth and verticality to the design•	Minimal décor elements that enhance visual balance without cluttering the space.'
     },
     {
       title: 'Renovation Project',
@@ -176,12 +178,20 @@ export default function PortfolioWebsite() {
         'Complete renovation transforming existing space with modern amenities, improved functionality, and updated aesthetic appeal.'
     },
     {
-      title: 'Renovation Project',
+      title: 'Dinning Space',
       category: 'Design & Execution',
       gradient: 'from-orange-500 to-yellow-500',
-      image: projectImages.sixth,
+      image: projectImages.seven,
       description:
-        'Complete renovation transforming existing space with modern amenities, improved functionality, and updated aesthetic appeal.'
+        'This interior design showcases a modern-contemporary living and dining area with an open layout that enhances functionality and visual flow. The space is designed to feel bright, spacious, and welcoming, using a neutral palette blended with accent colors.Design Highlights:•	Open-concept layout connecting living & dining spaces•	Soft beige tones with blue and grey accents for modern contrast•	Large windows with sheer curtains allowing natural light to fill the space•	Unique, sculptural furniture with rounded edges for a contemporary look•	Wooden elements and decor adding warmth and natural texture•	Designer ceiling lights with elegant hanging fixtures•	Minimal yet functional storage and display unit near the dining area'
+    },
+    {
+      title: 'Minimal Modern TV Unit',
+      category: 'Design & Execution',
+      gradient: 'from-orange-500 to-yellow-500',
+      image: projectImages.eight,
+      description:
+        'This design features a sleek and elegant TV unit with a strong focus on minimalism and clean aesthetics. The combination of soft neutral tones, hidden lighting, and subtle textures creates a calm and sophisticated atmosphere.Design Features:•	Neutral beige color palette for a soothing look•	Soft LED backlighting highlighting the TV panel•	Curved edge detailing for a modern and seamless appearance•	Vertical fluted panel texture adding depth and visual interest•	Built-in shelving for décor and books – both functional and aesthetic•	Low-height console unit with wooden grooves for a stylish finish'
     }
   ];
 
